@@ -1,5 +1,14 @@
 # Revision History
 
+## Version 1.8.2 -- May 2026
+
+### Bugs Fixed:
+
+Vulnerabilities reported by dkgkdfg65 (https://github.com/dkgkdfg65) and backported from development 1.9.
+
+- KISS stack-buffer-overflow ([CVE-2025-34457](https://github.com/advisories/GHSA-28g2-hxcm-j3q2))
+- MIC-E packet abort [(CVE-2025-34458)](https://github.com/advisories/GHSA-28g2-hxcm-j3q2)
+
 ## Version 1.8.1 -- November 2025
 
 ### Bug Fixed:
