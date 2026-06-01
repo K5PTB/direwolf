@@ -326,6 +326,7 @@ typedef struct alevel_s {
 	int mark;
 	int space;
 	//float ms_ratio;	// TODO: take out after temporary investigation.
+	int avg_quality;	/* Average per-bit confidence 0-100; -1 if not available. */
 } alevel_t;
 
 

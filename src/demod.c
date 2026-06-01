@@ -1087,6 +1087,7 @@ alevel_t demod_get_audio_level (int chan, int subchan)
 	// Take half of peak-to-peak for received audio level.
 
 	alevel.rec = (int) (( D->alevel_rec_peak - D->alevel_rec_valley ) * 50.0f + 0.5f);
+	alevel.avg_quality = (int)(D->quality_ema + 0.5f);
 
 	if (save_audio_config_p->achan[chan].modem_type == MODEM_AFSK ||
 	    save_audio_config_p->achan[chan].modem_type == MODEM_EAS) {

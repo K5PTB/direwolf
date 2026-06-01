@@ -1305,7 +1305,7 @@ void app_process_rec_packet (int chan, int subchan, int slice, packet_t pp, alev
 
 	    // audio level applies only for internal modem channels.
 	    if (subchan >=0) {
-	      dw_printf ("%s (probably %s) audio level = %s  %s  %s\n", heard, probably_really, alevel_text, display_retries, spectrum);
+	      dw_printf ("%s (probably %s) audio level = %s q=%d  %s  %s\n", heard, probably_really, alevel_text, alevel.avg_quality, display_retries, spectrum);
 	    }
 	    else {
 	      dw_printf ("%s (probably %s)\n", heard, probably_really);
@@ -1320,7 +1320,7 @@ void app_process_rec_packet (int chan, int subchan, int slice, packet_t pp, alev
 
 	    // audio level applies only for internal modem channels.
 	    if (subchan >= 0) {
-	      dw_printf ("%s audio level = %s  %s  %s\n", heard, alevel_text, display_retries, spectrum);
+	      dw_printf ("%s audio level = %s q=%d  %s  %s\n", heard, alevel_text, alevel.avg_quality, display_retries, spectrum);
 	    }
 	    else {
 	      dw_printf ("%s\n", heard);

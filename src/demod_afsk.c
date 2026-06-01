@@ -247,6 +247,7 @@ void demod_afsk_init (int samples_per_sec, int baud, int mark_freq,
 	
 	memset (D, 0, sizeof(struct demodulator_state_s));
 	D->num_slicers = 1;
+	D->quality_ema = 50.0f;	/* Start at neutral until we have real data. */
 
 #if DEBUG1
 	dw_printf ("demod_afsk_init (rate=%d, baud=%d, mark=%d, space=%d, profile=%c\n",
@@ -885,6 +886,8 @@ static void nudge_pll (int chan, int subchan, int slice, float demod_out, struct
 
 	  int quality = fabsf(demod_out) * 100.0f / amplitude;
 	  if (quality > 100) quality = 100;
+
+	  D->quality_ema = D->quality_ema * 0.9f + (float)quality * 0.1f;
 
 #if DEBUG5
 	  // Write bit stream to a file.

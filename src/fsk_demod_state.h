@@ -167,6 +167,8 @@ struct demodulator_state_s
 	float alevel_mark_peak;
 	float alevel_space_peak;
 
+	float quality_ema;	/* Exponential moving average of per-bit confidence, 0-100. */
+
 /*
  * Outputs from the mark and space amplitude detection, 
  * used as inputs to the FIR lowpass filters.
