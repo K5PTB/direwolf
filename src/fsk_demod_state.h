@@ -551,6 +551,13 @@ inline static void pll_dcd_each_symbol2 (struct demodulator_state_s *D, int chan
 	  if (D->slicer[slice].data_detect != 0) {
 	    D->slicer[slice].data_detect = 0;
 	    dcd_change (chan, subchan, slice, D->slicer[slice].data_detect);
+	    /* Reset DPLL timing state so the next packet begins phase-tracking from a
+	     * clean start.  Stale PLL phase accumulated during inter-packet silence
+	     * produces wrong symbol boundaries on the first few bits of the new frame. */
+	    D->slicer[slice].data_clock_pll   = 0;
+	    D->slicer[slice].prev_d_c_pll     = 0;
+	    D->slicer[slice].prev_demod_data  = 0;
+	    D->slicer[slice].prev_demod_out_f = 0.0f;
 	  }
 	}
 }
